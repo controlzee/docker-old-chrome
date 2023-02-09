@@ -14,9 +14,23 @@ RUN set -ex; \
       tigervnc-common \
       tigervnc-standalone-server \
       xterm \
-      expect
+      expect \
+      git
 
-RUN ln -s /usr/share/novnc/vnc_lite.html /usr/share/novnc/index.html
+WORKDIR /root
+
+# Replace noVNC frontend with newer version in order to get quality/compression support
+RUN git clone https://github.com/novnc/noVNC.git && \
+  cd noVNC && \
+  git checkout v1.3.0 && \
+  rm -rf /usr/share/novnc/app /usr/share/novnc/core /usr/share/novnc/vendor /usr/share/novnc/*.html && \
+  cp -R ./app /usr/share/novnc/ && \
+  cp -R ./core /usr/share/novnc/ && \
+  cp -R ./vendor /usr/share/novnc/ && \
+  cp -R ./vnc.html /usr/share/novnc/ && \
+  cp -R ./vnc_lite.html /usr/share/novnc/ && \
+  cd /usr/share/novnc && \
+  ln -s vnc.html index.html
 
 ENV HOME=/root \
     DISPLAY=:0.0 \
