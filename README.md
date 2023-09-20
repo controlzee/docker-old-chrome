@@ -13,4 +13,4 @@ Get an old version of chrome here: https://vikyd.github.io/download-chromium-his
 ./run.sh
 ```
 
-It will open <http://localhost:8080/>, where you can access the screen.
+It will open <http://localhost:8590/>, where you can access the screen.

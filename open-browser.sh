@@ -5,4 +5,4 @@ if [[ "$(uname)" != "Darwin" ]]; then
   OPEN="xdg-open"
 fi
 
-$OPEN http://localhost:8080
+$OPEN http://localhost:8590

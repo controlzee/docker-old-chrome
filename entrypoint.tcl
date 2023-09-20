@@ -10,7 +10,7 @@ spawn -noecho supervisord -c /vnc/supervisord.conf
 expect {success: fluxbox entered RUNNING state}
 
 puts ""
-puts "--- Servers started. Open http://localhost:8080/ to interact with the container. ---"
+puts "--- Servers started. Open http://localhost:8590/ to interact with the container. ---"
 puts ""
 
 if {[llength $argv] > 0} {
